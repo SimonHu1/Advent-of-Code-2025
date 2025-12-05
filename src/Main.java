@@ -18,7 +18,7 @@ public class Main {
             while ((line = br.readLine()) != null) {
                 System.out.println(currentpos);
                 System.out.println(line);
-                calculateDial(line, currentpos);
+                calculateDial2(line, currentpos);
             }
             System.out.println("Password: " + password);
             br.close();
@@ -29,7 +29,7 @@ public class Main {
         }
     }
 
-    public static void calculateDial(String input, int pos)
+    public static void calculateDial1(String input, int pos)
     {
         boolean right = input.startsWith("R");
         int turn = Integer.parseInt(input.substring(1));
@@ -53,6 +53,51 @@ public class Main {
             }
         }
         if(pos==0) password++;
+        currentpos=pos;
+    }
+
+    public static void calculateDial2(String input, int pos)
+    {
+        boolean right = input.startsWith("R");
+        int turn = Integer.parseInt(input.substring(1));
+        if(turn/100 > 0) password+=turn/100;
+        int newturn = turn%100;
+        if(right)
+        {
+            pos += newturn;
+            if(pos > 99)
+            {
+                pos -= 100;
+                password++;
+                System.out.println(pos +"," + password);
+            }
+            else if(pos == 0)
+            {
+                password++;
+                if(newturn == 0)
+                {
+                    password--;
+                }
+            }
+        }
+        else
+        {
+            if(pos == 0)
+            {
+                password--;
+            }
+            pos -= newturn;
+            if(pos < 0)
+            {
+                pos = 100+pos;
+                password++;
+                System.out.println(pos +"," + password);
+            }
+            else if(pos == 0)
+            {
+                password++;
+            }
+        }
         currentpos=pos;
     }
 }
