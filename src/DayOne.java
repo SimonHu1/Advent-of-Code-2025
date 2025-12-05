@@ -8,6 +8,7 @@ public class DayOne {
     public DayOne() {
         System.out.println("Advent of Code Day One Solution");
     }
+
     public void solve(int part) {
         try {
             BufferedReader br = new BufferedReader(new FileReader("src/input.txt"));

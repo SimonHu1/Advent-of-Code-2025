@@ -8,8 +8,11 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) {
         //Advent of Code Day 1
-        DayOne dayOneSolutions = new DayOne();
-        dayOneSolutions.solve(1);
-        dayOneSolutions.solve(2);
+//        DayOne dayOneSolutions = new DayOne();
+//        dayOneSolutions.solve(1);
+//        dayOneSolutions.solve(2);
+
+        DayTwo dayTwoSolutions = new DayTwo();
+        dayTwoSolutions.solve();
     }
 }
