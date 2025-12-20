@@ -13,6 +13,7 @@ public class Main {
 //        dayOneSolutions.solve(2);
 
         DayTwo dayTwoSolutions = new DayTwo();
-        dayTwoSolutions.solve();
+        dayTwoSolutions.solve(1);
+        dayTwoSolutions.solve(2);
     }
 }
