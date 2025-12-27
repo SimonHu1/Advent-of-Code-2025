@@ -5,23 +5,29 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class DayThree {
-    private int password;
+    private Long password;
     public DayThree() {
         System.out.println("Advent of Code Day Three Solution");
     }
 
     public void solve(int part) {
-        if(part == 1) {
-
-        }
         try{
             BufferedReader br = new BufferedReader(new FileReader("src/input3.txt"));
             String line;
-            password = 0;
+            password = 0L;
             while ((line = br.readLine()) != null) {
-                calculateBank(line);
+                if(part==1)
+                {
+                    calculateBank(line);
+                }
+                if(part==2)
+                {
+                    calculateBank2(line);
+                }
             }
-            System.out.println("Password One: "+password);
+            if(part==1) System.out.println("Password One: "+password);
+            if(part==2) System.out.println("Password Two: "+password);
+
         }
         catch(IOException e)
         {
@@ -50,8 +56,6 @@ public class DayThree {
             digitCheck = ""+(Integer.parseInt(digitCheck) - 1);
         }
         partString = line.substring(firstDigitIndex+1);
-        //System.out.println("first dig index" + firstDigitIndex);
-        //System.out.println("second part string" + partString.substring(partString.length()-1));
         digitCheck = "9";
         while(secondDigit==0)
         {
@@ -64,10 +68,39 @@ public class DayThree {
             }
             digitCheck = ""+(Integer.parseInt(digitCheck) - 1);
         }
-        if(secondDigit>firstDigit) System.out.println("BIG SDHAUDASIUD");
         int maxJoltage = (firstDigit*10) + secondDigit;
-        System.out.println(maxJoltage);
         password += maxJoltage;
 
+    }
+
+    public void calculateBank2(String line)
+    {
+        int[] digitArray = new int[12];
+        String digitCheck = "9";
+        Long maxJoltage = 0L;
+        int digitIndex = -1;
+        String partString;
+        //loops 12 times (once for each digit)
+        for(int i=0;i<12;i++)
+        {
+            digitCheck = "9";
+            partString = line.substring(digitIndex+1,line.length()-11+i);
+            while(digitArray[i]==0)
+            {
+                for(int j=0;j<partString.length();j++)
+                {
+                    if((partString.charAt(j)+"").equals(digitCheck))
+                    {
+                        digitArray[i] = Integer.parseInt(partString.charAt(j)+"");
+                        maxJoltage += (long) (Math.pow(10.0,11.0-i)*digitArray[i]);
+                        digitIndex+=j+1;
+                        j =  partString.length() + 1;
+                    }
+                }
+                digitCheck = ""+(Integer.parseInt(digitCheck) - 1);
+            }
+
+        }
+        password += maxJoltage;
     }
 }

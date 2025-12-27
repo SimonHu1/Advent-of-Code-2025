@@ -18,5 +18,6 @@ public class Main {
 
         DayThree dayThreeSolutions = new DayThree();
         dayThreeSolutions.solve(1);
+        dayThreeSolutions.solve(2);
     }
 }
