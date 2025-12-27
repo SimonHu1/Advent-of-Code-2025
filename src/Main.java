@@ -12,8 +12,11 @@ public class Main {
 //        dayOneSolutions.solve(1);
 //        dayOneSolutions.solve(2);
 
-        DayTwo dayTwoSolutions = new DayTwo();
-        dayTwoSolutions.solve(1);
-        dayTwoSolutions.solve(2);
+//        DayTwo dayTwoSolutions = new DayTwo();
+//        dayTwoSolutions.solve(1);
+//        dayTwoSolutions.solve(2);
+
+        DayThree dayThreeSolutions = new DayThree();
+        dayThreeSolutions.solve(1);
     }
 }
